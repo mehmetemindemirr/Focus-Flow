@@ -1,0 +1,16 @@
+# Python gereksizleri
+__pycache__/
+*.py[cod]
+
+# Model dosyaları (GitHub'a yüklenmesin diye)
+*.pt
+*.onnx
+
+# Sanal ortam
+.venv/
+venv/
+env/
+
+# IDE ayarları
+.vscode/
+.idea/
