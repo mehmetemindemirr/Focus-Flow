@@ -1,55 +1,51 @@
-🚀 Focus-Flow: AI Productivity Tracker (YOLOv11)
-Focus-Flow, çalışma ortamınızı gerçek zamanlı olarak analiz eden ve verimliliğinizi artırmak için tasarlanmış bir yapay zeka asistanıdır. YOLOv11 nesne tespit modelini kullanarak odak durumunuzu takip eder ve dikkatiniz dağıldığında sizi uyarır.
+✨ Yenilikler & Özellikler
+⏱️ Dinamik Çalışma Kronometresi: Masada çalışma materyalleri (kitap, laptop vb.) tespit edildiği andan itibaren çalışma sürenizi saniye saniye hesaplar.
 
-✨ Özellikler
-Gerçek Zamanlı Odak Takibi: Çalışma masanızdaki nesneleri (Kitap, Laptop, Telefon) anlık olarak tanır.
+🍎 Apple Silicon (M1/M2/M3) Optimizasyonu: MPS (Metal Performance Shaders) desteği ile Mac cihazlarda düşük güç tüketimi ve yüksek FPS.
 
-Akıllı Uyarı Sistemi: Telefon tespit edildiğinde görsel uyarılar vererek odak kaybını önler.
+⚠️ Akıllı Dikkat Dağıtıcı Filtresi: Telefonu sadece "görmekle" kalmaz; eğer 2 saniyeden uzun süre elinizde tutarsanız sizi görsel bir alarm (kırmızı ekran) ile uyarır.
 
-Sağlık Hatırlatıcıları: Çalışma sırasında su içmeyi unutursanız ekranda hatırlatıcılar çıkarır.
+💧 Hidrasyon Desteği: Görüş alanında bir su şişesi yoksa, sağlığınız için ekranda nazik bir hatırlatıcı belirir.
 
-Yüksek Performans: YOLOv11 Nano modeli sayesinde ASUS (NVIDIA) ve MacBook Air M1 cihazlarda yüksek FPS ile çalışır.
+📊 Durum Bilgisi: O anki modunuzu (Çalışıyor/Mola) ve aktif çalışma sürenizi gerçek zamanlı olarak ekrana yansıtır.
 
 🛠️ Teknoloji Yığını
-AI/Vision: Ultralytics YOLOv11
+Core AI: Ultralytics YOLOv11 Nano (Hız ve doğruluk dengesi için optimize edildi).
 
-Framework: Python 3.x
+Vision: OpenCV (Görüntü işleme ve görsel geri bildirim).
 
-Library: OpenCV, Time
+Engine: Python 3.10+
 
-Hardware: ASUS Laptop (NVIDIA GPU Optimized) & M1 Mac Support
+Hardware Acceleration: M1 Mac (MPS) & NVIDIA (CUDA) desteği.
 
-📦 Kurulum
-Depoyu Klonlayın:
+🧠 Mantık Katmanı (Logic Layer) Nasıl Çalışır?
+Proje, ham veriyi işleyerek anlamlı kararlar verir:
+
+Zaman Kilidi (Time-Latch): Süre sayaçları her karede sıfırlanmaz. Nesne ilk tespit edildiğinde bir "başlangıç damgası" vurulur ve nesne kaybolana kadar bu damga üzerinden fark hesaplanır.
+
+Hassas Tespit: map(int, box.xyxy[0]) kullanılarak koordinatlar tam sayıya çevrilir, bu da daha akıcı ve titremeyen kutular sağlar.
+
+Hata Payı Yönetimi: Anlık nesne kaybolmalarında (false negative) kronometrenin hemen sıfırlanmaması için esnek bir kontrol mekanizmasına sahiptir.
+
+📦 Kurulum ve Çalıştırma
+1. Depoyu Klonlayın
 
 Bash
-git clone https://github.com/kullanici-adin/focus-flow.git
+git clone https://github.com/mehmetemindemir/focus-flow.git
 cd focus-flow
-Gerekli Kütüphaneleri Yükleyin:
+2. Bağımlılıkları Yükleyin
 
 Bash
 pip install ultralytics opencv-python
-Projeyi Çalıştırın:
+3. Uygulamayı Başlatın
 
 Bash
 python main.py
-🧠 Mantık Katmanı (Logic Layer)
-Bu proje sadece nesne tespiti yapmaz, aynı zamanda tespit edilen nesneler arasında bir mantık kurar:
+📈 Yol Haritası (Future Roadmap)
+[ ] FastAPI & Streamlit: Projeyi bir web arayüzüne taşımak.
 
-Dikkat Dağıtıcı Kontrolü: cell phone sınıfı 2 saniyeden uzun süre tespit edilirse ekran kırmızıya döner.
+[ ] Daily Analytics: Gün sonunda "Bugün ne kadar odaklı çalıştın?" raporu oluşturmak (Matplotlib entegrasyonu).
 
-Çalışma Modu: book veya laptop görüldüğünde sistem "ÇALIŞIYOR" moduna geçer.
+[ ] Pose Estimation: YOLOv11-Pose ile kambur duruş uyarısı eklemek.
 
-Hydration Alert: Görüntüde bottle yoksa su içme hatırlatıcısı aktif kalır.
-
-📈 Gelecek Planları
-[ ] Flutter Entegrasyonu: Mobil uygulama üzerinden anlık bildirimler göndermek.
-
-[ ] FastAPI Backend: Görüntü işlemeyi sunucu tarafına taşıyarak daha hafif bir istemci oluşturmak.
-
-[ ] Duruş Analizi: YOLOv11-Pose kullanarak çalışma sırasında yanlış oturuş uyarısı eklemek.
-
-🤝 Katkıda Bulunma
-Bu bir öğrenci projesidir ve her türlü katkıya açıktır. Herhangi bir sorunuz varsa bir Issue açmaktan çekinmeyin!
-
-Geliştiren: Mehmet Emin Demir - Gümüşhane Üniversitesi Yazılım Mühendisliği Öğrencisi
+[ ] Flutter App: Bildirimlerin mobil telefona "Bildirim" olarak düşmesi.
