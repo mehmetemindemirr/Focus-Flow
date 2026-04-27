@@ -41,6 +41,8 @@ pip install ultralytics opencv-python
 
 Bash
 python main.py
+
+
 📈 Yol Haritası (Future Roadmap)
 [ ] FastAPI & Streamlit: Projeyi bir web arayüzüne taşımak.
 
